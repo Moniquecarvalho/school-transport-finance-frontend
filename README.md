@@ -1,38 +1,16 @@
-# School Transport Finance – Frontend
+# React + Vite
 
-Aplicação web para gestão financeira de transporte escolar, com foco no controle
-de mensalidades, pagamentos, despesas e saldo mensal.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Este projeto está sendo desenvolvido como um sistema real, baseado em regras de
-negócio do dia a dia do transporte escolar.
+Currently, two official plugins are available:
 
-## Objetivo do Projeto
-Centralizar e facilitar o controle financeiro de vans escolares, oferecendo uma
-interface simples, clara e eficiente para o acompanhamento de receitas e despesas,
-além do apoio à organização operacional do transporte.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Funcionalidades (em planejamento)
-- Cadastro e visualização de alunos
-- Cadastro de responsáveis legais
-- Controle de rotas
-- Controle de mensalidades
-- Registro de pagamentos
-- Registro e controle de despesas operacionais  
-  (abastecimento e manutenção)
-- Visualização de saldo mensal
-- Registro de mensagens de emergência  
-  (comunicação rápida com responsáveis em caso de imprevistos)
+## React Compiler
 
-## Tecnologias
-- React
-- JavaScript
-- HTML5
-- CSS3
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Status do Projeto
-Em desenvolvimento 🚧
+## Expanding the ESLint configuration
 
-## Observações
-Este projeto faz parte do meu portfólio profissional e será evoluído
-gradualmente, com melhorias contínuas, novas funcionalidades e integração
-com backend futuramente.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
