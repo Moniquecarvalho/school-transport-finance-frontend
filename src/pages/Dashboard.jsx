@@ -1,5 +1,7 @@
-function Dashboard (){
-    return <h1>Dashboard Page</h1>
-}
+import api from "../services/api";
 
-export default Dashboard;
+api.get("/test")
+  .then(response => console.log(response))
+  .catch(error => console.log(error));
+
+export default api; 
