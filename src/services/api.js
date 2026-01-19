@@ -10,8 +10,37 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  
+
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (!error.response) {
+      console.error("Erro de conexão com o servidor");
+      return Promise.reject(error);
+    }
+
+    const status = error.response.status;
+
+    if (status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+
+    if (status === 403) {
+      console.error("Acesso negado");
+    }
+
+    if (status >= 500) {
+      console.error("Erro interno do servidor");
+    }
+
+    return Promise.reject(error);
+  },
+);
 
 export default api;

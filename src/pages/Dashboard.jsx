@@ -1,7 +1,7 @@
-import api from "../services/api";
-
-api.get("/test")
-  .then(response => console.log(response))
-  .catch(error => console.log(error));
-
-export default api; 
+export default function Dashboard() {
+    return (
+        <div>
+            <h1>Configuracoes Dashboard</h1>
+        </div>
+    );
+}
