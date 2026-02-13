@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #1173d4;
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #0f172a;
+  --color-surface-dark: #1e293b;
+  --color-border-dark: #334155;
+
+  /* Fontes */
+  --font-display: "Inter", "sans-serif";
+
+  /* Border Radius */
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+}
+
+/* Se você quiser estilos globais para o corpo do site, adicione aqui: */
+@layer base {
+  body {
+    @apply bg-background-light text-background-dark;
+    font-family: var(--font-display);
+  }
+}
