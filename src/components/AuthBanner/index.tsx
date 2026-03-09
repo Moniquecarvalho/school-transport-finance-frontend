@@ -5,7 +5,7 @@ import loginImage from "../../assets/images/login-image.png";
 export function AuthBanner() {
   return (
     <aside className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
-      <div className="w-full max-w-250 bg-white dark:bg-surface-dark rounded-xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-162.5 border border-slate-200 dark:border-border-dark">
+      <div className="w-full max-w-270 bg-white dark:bg-surface-dark rounded-xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-162.5 border border-slate-200 dark:border-border-dark">
         <div className="hidden md:flex md:w-1/2 relative bg-primary/10 overflow-hidden">
           <div className="absolute inset-0 z-0 bg-cover bg-center opacity-80 mix-blend-overlay">
             <img
