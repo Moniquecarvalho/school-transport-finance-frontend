@@ -1,8 +1,10 @@
 import { User, Mail, LockKeyhole, Shield } from "lucide-react";
 import { GoogleButton } from "../../components/GoogleButton";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export function Register() {
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   return (
     <main className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
       <div className="mb-8">
@@ -14,11 +16,11 @@ export function Register() {
         </p>
       </div>
 
-      <div className="mb-6">
+      <div className="mb-4">
         <GoogleButton label="Cadastrar com Google" />
       </div>
 
-      <div className="relative my-8">
+      <div className="relative my-6">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t border-slate-300 dark:border-border-dark"></span>
         </div>
@@ -132,17 +134,28 @@ export function Register() {
               id="terms"
               name="terms"
               type="checkbox"
+              required={true}
+              checked={acceptedTerms}
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
             />
             <label
               className="ml-2 block text-sm text-slate-600 dark:text-slate-400"
               htmlFor="terms"
             >
               Eu concordo com os{" "}
-              <a className="font-bold text-primary hover:underline" href="#">
+              <a className="font-bold text-primary hover:underline" 
+              href="/termos"
+              target="_blank"
+              rel="noopener noreferrer"
+              >
                 Termos de Serviço
               </a>{" "}
               e a{" "}
-              <a className="font-bold text-primary hover:underline" href="#">
+              <a className="font-bold text-primary hover:underline" 
+              href="/politica-de-privacidade"
+              target="_blank"
+              rel="noopener noreferrer"
+              >
                 Política de Privacidade
               </a>
               .

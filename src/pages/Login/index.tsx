@@ -1,10 +1,33 @@
-import { Van, Eye, EyeClosed } from "lucide-react";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "../../services/firabaseConfig";
 import { useState } from "react";
+import { FirebaseError } from "firebase/app";
+
+import { Van, Eye, EyeClosed } from "lucide-react";
 import { Link } from "react-router-dom";
 import { GoogleButton } from "../../components/GoogleButton";
 
 export function Login() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [email, setEmail] = useState("");
+  async function handleForgotPassword() {
+    if (!email) {
+      alert("Por favor, digite seu e-mail no campo acima primeiro.");
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("E-mail de redefinição enviado! Verifique sua caixa de entrada.");
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        console.error("Erro Firebase:", error.code);
+        alert("Erro ao enviar e-mail. Verifique o endereço digitado.");
+      } else {
+        console.error("Erro desconhecido:", error);
+        alert("Ocorreu um erro inesperado.");
+      }
+    }
+  }
 
   return (
     <>
@@ -19,7 +42,7 @@ export function Login() {
             VanControl
           </h1>
         </div>
-        <div className="mb-8">
+        <div className="mb-4">
           <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100">
             Bem-vindo de volta
           </h2>
@@ -28,7 +51,7 @@ export function Login() {
           </p>
         </div>
 
-        <div className="relative my-8">
+        <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t border-slate-300 dark:border-border-dark"></span>
           </div>
@@ -38,9 +61,9 @@ export function Login() {
             </span>
           </div>
         </div>
-        
+
         <div className="mb-6">
-           <GoogleButton label="Entrar com Google" />
+          <GoogleButton label="Entrar com Google" />
         </div>
 
         <form action="#" className="space-y-5" method="POST">
@@ -57,6 +80,8 @@ export function Login() {
               required={true}
               name="email"
               autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-border-dark dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-sm placeholder:text-slate-400"
               placeholder="seu@email.com"
             />
@@ -111,6 +136,10 @@ export function Login() {
               <a
                 className="font-medium text-primary hover:text-primary/80 transition-colors"
                 href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleForgotPassword();
+                }}
               >
                 Esqueceu a senha?
               </a>
@@ -127,7 +156,7 @@ export function Login() {
           Não tem uma conta?{" "}
           <Link
             className="font-bold text-primary hover:text-primary/80 transition-colors ml-1"
-            to="/register" 
+            to="/register"
           >
             Cadastre-se
           </Link>
