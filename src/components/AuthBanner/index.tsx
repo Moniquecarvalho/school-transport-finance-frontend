@@ -1,11 +1,8 @@
-import type { ReactNode } from "react";
+import { Outlet } from "react-router-dom";
 import loginImage from "../../assets/images/login-image.png";
 
-interface AuthBannerProps {
-  children: ReactNode;
-}
 
-export function AuthBanner({ children }: AuthBannerProps) {
+export function AuthBanner() {
   return (
     <aside className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-250 bg-white dark:bg-surface-dark rounded-xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-162.5 border border-slate-200 dark:border-border-dark">
@@ -35,7 +32,7 @@ export function AuthBanner({ children }: AuthBannerProps) {
             </div>
           </div>
         </div>
-        {children}
+        <Outlet />
       </div>
     </aside>
   );
