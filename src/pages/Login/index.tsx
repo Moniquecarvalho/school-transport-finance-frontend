@@ -1,9 +1,34 @@
 import loginImage from "../../assets/images/login-image.png";
 import { Van, Eye, EyeClosed } from "lucide-react";
 import { useState } from "react";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../../services/firabaseConfig";
 
 export function Login() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
+
+  const provider = new GoogleAuthProvider();
+  // provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  // provider.setCustomParameters({
+  //   login_hint: "user@example.com",
+  // });
+
+  function handleGoogleLogin() {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        const email = error.customData.email;
+         const credential = GoogleAuthProvider.credentialFromError(error);
+
+        console.log(errorCode, errorMessage, email, credential);
+      });
+  }
 
   return (
     <>
@@ -40,10 +65,10 @@ export function Login() {
           <main className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
             <div className="mb-8 flex items-center gap-3">
               <div className="bg-primary/20 backdrop-blur-md w-10 h-10 rounded-lg flex items-center justify-center border border-primary/30">
-                  <span className=" text-primary text-3xl">
-                    <Van />
-                  </span>
-                </div>
+                <span className=" text-primary text-3xl">
+                  <Van />
+                </span>
+              </div>
               <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
                 VanControl
               </h1>
@@ -56,7 +81,10 @@ export function Login() {
                 Acesse sua conta e controle suas finanças.
               </p>
             </div>
-            <button className="w-full flex items-center justify-center gap-3 px-4 py-2.5 border border-slate-300 dark:border-border-dark rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-slate-700 dark:text-slate-200 font-medium text-sm cursor-pointer">
+            <button
+              onClick={handleGoogleLogin}
+              className="w-full flex items-center justify-center gap-3 px-4 py-2.5 border border-slate-300 dark:border-border-dark rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-slate-700 dark:text-slate-200 font-medium text-sm cursor-pointer"
+            >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 
