@@ -1,6 +1,7 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../../services/firabaseConfig";
 import { FirebaseError } from "firebase/app";
+
+import { auth } from "../../services/firebaseConfig";
 
 interface GoogleButtonProps {
   label: string;

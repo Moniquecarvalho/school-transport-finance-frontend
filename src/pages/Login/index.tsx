@@ -1,10 +1,10 @@
-import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../services/firabaseConfig";
 import { useState } from "react";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
-
-import { Van, Eye, EyeClosed } from "lucide-react";
+import { Eye, EyeClosed } from "lucide-react";
 import { Link } from "react-router-dom";
+import { auth } from "../../services/firebaseConfig";
+import AppLogo from "../../components/AppLogo";
 import { GoogleButton } from "../../components/GoogleButton";
 
 export function Login() {
@@ -32,17 +32,8 @@ export function Login() {
   return (
     <>
       <main className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-        <div className="mb-8 flex items-center gap-3">
-          <div className="bg-primary/20 backdrop-blur-md w-10 h-10 rounded-lg flex items-center justify-center border border-primary/30">
-            <span className=" text-primary text-3xl">
-              <Van />
-            </span>
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-            VanControl
-          </h1>
-        </div>
         <div className="mb-4">
+          <AppLogo />
           <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-100">
             Bem-vindo de volta
           </h2>

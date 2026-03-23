@@ -1,13 +1,15 @@
-import { User, Mail, LockKeyhole, Shield } from "lucide-react";
-import { GoogleButton } from "../../components/GoogleButton";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { User, Mail, LockKeyhole, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
+import AppLogo from "../../components/AppLogo";
+import { GoogleButton } from "../../components/GoogleButton";
 
 export function Register() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   return (
     <main className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
       <div className="mb-8">
+        <AppLogo />
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Crie sua conta
         </h2>
